@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using AsyncExample.Async;
+using AsyncExample.Callback;
+using AsyncExample.Sync;
 
 namespace AsyncExample
 {
@@ -6,63 +11,19 @@ namespace AsyncExample
     {
         private static void Main(string[] args)
         {
-            Method1();
-            Console.ReadKey();
-            Method2();
-            Console.ReadKey();
-            Method3();
-            Console.ReadKey();
-        }
+            //TrySync.Do();
+            //Console.ReadKey();
 
-        private static void Method1()
-        {
-            foreach (string database in Svc.GetDatabases())
-            {
-                foreach (string table in Svc.GetTables(database))
-                {
-                    foreach (string column in Svc.GetColumns(database, table))
-                    {
-                        Console.WriteLine("Database: {0}, Table: {1}, Column: {2}", database, table, column);
-                    }
-                }
-            }
-        }
+            //TryCallback.Do1();
+            //Console.ReadKey();
+            //TryCallback.Do1();
+            //Console.ReadKey();
 
-        private static void Method2()
-        {
-            Svc.GetDatabasesAsync(databases =>
-            {
-                foreach (string database in databases)
-                {
-                    Svc.GetTablesAsync(database, tables =>
-                    {
-                        foreach (string table in tables)
-                        {
-                            Svc.GetColumnsAsync(database, table, columns =>
-                            {
-                                foreach (string column in columns)
-                                {
-                                    Console.WriteLine("Database: {0}, Table: {1}, Column: {2}", database, table, column);
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        }
+            //TryAsync.Do();
+            //Console.ReadKey();
 
-        private static async void Method3()
-        {
-            foreach (string database in await Svc.GetDatabasesAsync())
-            {
-                foreach (string table in await Svc.GetTablesAsync(database))
-                {
-                    foreach (string column in await Svc.GetColumnsAsync(database, table))
-                    {
-                        Console.WriteLine("Database: {0}, Table: {1}, Column: {2}", database, table, column);
-                    }
-                }
-            }
+            TryYield.Do();
+            Console.ReadKey();
         }
     }
 }

@@ -44,9 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Async\DatabaseAsync.cs" />
+    <Compile Include="Callback\DatabaseCallback.cs" />
+    <Compile Include="TryCallback.cs" />
+    <Compile Include="TryYield.cs" />
+    <Compile Include="TrySync.cs" />
+    <Compile Include="TryAsync.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Svc.cs" />
+    <Compile Include="Sync\DatabaseSync.cs" />
+    <Compile Include="Yield\DatabaseYield.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
